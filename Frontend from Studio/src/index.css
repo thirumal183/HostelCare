@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-page: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-subtle: #F1F5F9;
+  --bg-surface-hover: #E2E8F0;
+  --border-main: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-faint: #94A3B8;
+  --accent: #1D4ED8;
+  --accent-hover: #1E40AF;
+  --accent-surface: #EFF6FF;
+  --accent-text: #1D4ED8;
+}
+
+.dark {
+  --bg-page: #0B132B;
+  --bg-surface: #152238;
+  --bg-surface-subtle: #1E2E4A;
+  --bg-surface-hover: #283D61;
+  --border-main: #243654;
+  --border-subtle: #1A2840;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-faint: #64748B;
+  --accent: #60A5FA;
+  --accent-hover: #93C5FD;
+  --accent-surface: #172A46;
+  --accent-text: #93C5FD;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Hostel UI Theme Utility Classes */
+.bg-hostel-page, .bg-earth-page { background-color: var(--bg-page); }
+.bg-hostel-surface, .bg-earth-surface { background-color: var(--bg-surface); }
+.bg-hostel-subtle, .bg-earth-subtle { background-color: var(--bg-surface-subtle); }
+.bg-hostel-hover:hover, .bg-earth-hover:hover { background-color: var(--bg-surface-hover); }
+.border-hostel, .border-earth { border-color: var(--border-main); }
+.border-hostel-subtle, .border-earth-subtle { border-color: var(--border-subtle); }
+.text-hostel-main, .text-earth-main { color: var(--text-main); }
+.text-hostel-muted, .text-earth-muted { color: var(--text-muted); }
+.text-hostel-faint, .text-earth-faint { color: var(--text-faint); }
+.bg-hostel-accent, .bg-earth-accent { background-color: var(--accent); }
+.bg-hostel-accent:hover, .bg-earth-accent:hover { background-color: var(--accent-hover); }
+.text-hostel-accent, .text-earth-accent { color: var(--accent); }
+.bg-hostel-accent-subtle, .bg-earth-accent-subtle { background-color: var(--accent-surface); }

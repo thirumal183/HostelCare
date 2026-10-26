@@ -1,0 +1,6 @@
+{
+  "name": "HOSTELCARE",
+  "description": "Enterprise Hostel Complaint Resolution System with Role-Based Access Control, Warden & Worker Dashboards, Real-time Complaint Tracking, and Analytics",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -306,11 +306,11 @@ async function loginWorker(email, password) {
         else fail('T19', JSON.stringify(rr));
     }
 
-    // T20: reopen CLOSED -> 409
+    // T20: reopen CLOSED -> 200 PENDING (student can reopen closed ticket)
     {
         // C.c1 is CLOSED from T1
         const rr = await http('PATCH', `/api/student/complaints/${C.c1}/reopen`, { token: tokStuA, body: {} });
-        if (rr.status === 409) pass('T20: reopen CLOSED -> 409');
+        if (rr.status === 200 && rr.json?.data?.status === 'PENDING') pass('T20: reopen CLOSED -> 200 PENDING');
         else fail('T20', JSON.stringify(rr));
     }
 

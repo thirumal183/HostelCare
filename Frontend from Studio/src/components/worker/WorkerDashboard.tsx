@@ -125,17 +125,22 @@ export const WorkerDashboard: React.FC<WorkerDashboardProps> = ({
   return (
     <div className="space-y-4">
       {/* Header Bar */}
-      <div className="bg-[#FFFFFF] dark:bg-[#152238] border border-[#E2E8F0] dark:border-[#243654] rounded-lg p-5 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-[#FFFFFF] dark:bg-[#152238] border border-slate-200 dark:border-[#243654] rounded-xl p-5 shadow-premium-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
-            Assigned work
-          </h1>
-          <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
-            <span>{user.name}</span>
-            <span className="mx-1.5">·</span>
+          <div className="flex items-center gap-2">
+            <h1 className="text-lg font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
+              Technician Workspace
+            </h1>
+            <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40">
+              {activeTickets.length} active jobs
+            </span>
+          </div>
+          <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1 flex flex-wrap items-center gap-1.5">
+            <span className="font-medium text-slate-800 dark:text-slate-200">{user.name}</span>
+            <span>·</span>
             <span>{user.category || 'Maintenance Technician'}</span>
-            <span className="mx-1.5">·</span>
-            <span>Worker ID: {user.userId || user.id}</span>
+            <span>·</span>
+            <span className="font-mono">ID: {user.userId || user.id}</span>
           </p>
         </div>
 
@@ -143,41 +148,41 @@ export const WorkerDashboard: React.FC<WorkerDashboardProps> = ({
           <button
             onClick={onRefresh}
             disabled={isRefreshing}
-            className="px-3 py-1.5 rounded-md bg-[#F1F5F9] dark:bg-[#1E2E4A] hover:bg-[#E2E8F0] dark:hover:bg-[#283D61] text-[#0F172A] dark:text-[#F8FAFC] font-medium text-xs border border-[#E2E8F0] dark:border-[#243654] transition-colors flex items-center gap-1.5 disabled:opacity-50"
+            className="px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-[#1E2E4A] hover:bg-slate-100 dark:hover:bg-[#283D61] text-[#0F172A] dark:text-[#F8FAFC] font-medium text-xs border border-slate-200 dark:border-[#243654] transition-all shadow-premium-xs flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
             title="Refresh assigned jobs"
           >
-            <RefreshCcw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
-            Refresh
+            <RefreshCcw className={`w-3.5 h-3.5 text-slate-600 dark:text-slate-300 ${isRefreshing ? 'animate-spin' : ''}`} />
+            <span>Refresh</span>
           </button>
         )}
       </div>
 
       {/* Ticket Lookup Box */}
-      <div className="bg-[#FFFFFF] dark:bg-[#152238] border border-[#E2E8F0] dark:border-[#243654] rounded-lg p-4 shadow-sm">
-        <h2 className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
+      <div className="bg-[#FFFFFF] dark:bg-[#152238] border border-slate-200 dark:border-[#243654] rounded-xl p-5 shadow-premium-xs">
+        <h2 className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider mb-1">
           Look up complaint by ticket ID
         </h2>
-        <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mb-3">
+        <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mb-3.5">
           Enter ticket ID or number (e.g. 1 or HC-0001) to view complaint details and update status:
         </p>
 
-        <form onSubmit={handleLookup} className="flex flex-col sm:flex-row items-center gap-2">
+        <form onSubmit={handleLookup} className="flex flex-col sm:flex-row items-center gap-2.5">
           <div className="relative flex-1 w-full">
-            <Search className="w-3.5 h-3.5 text-[#64748B] dark:text-[#94A3B8] absolute left-3 top-2.5" />
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="text"
               required
               value={lookupTicketId}
               onChange={e => setLookupTicketId(e.target.value)}
               placeholder="e.g. 1 or HC-0001"
-              className="w-full pl-8 pr-3 py-1.5 text-xs font-mono bg-[#F8FAFC] dark:bg-[#0B132B] border border-[#E2E8F0] dark:border-[#243654] rounded-md text-[#0F172A] dark:text-[#F8FAFC] focus:outline-none focus:ring-1 focus:ring-[#1D4ED8]"
+              className="w-full pl-9 pr-3.5 py-2 text-xs font-mono bg-slate-50 dark:bg-[#0B132B] border border-slate-200 dark:border-[#243654] rounded-lg text-[#0F172A] dark:text-[#F8FAFC] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
             />
           </div>
 
           <button
             type="submit"
             disabled={isLookingUp || !lookupTicketId.trim()}
-            className="w-full sm:w-auto px-4 py-1.5 rounded-md bg-[#1D4ED8] hover:bg-[#1E40AF] text-white text-xs font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5"
+            className="w-full sm:w-auto px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-all shadow-premium-xs hover:shadow-premium-sm disabled:opacity-50 flex items-center justify-center gap-1.5 cursor-pointer"
           >
             {isLookingUp ? 'Searching...' : 'Find complaint'}
             <ArrowRight className="w-3.5 h-3.5" />

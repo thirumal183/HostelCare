@@ -15,7 +15,23 @@ import { ActivationModal } from './components/auth/ActivationModal.tsx';
 import { ProfileModal } from './components/common/ProfileModal.tsx';
 import { BackendConfigModal } from './components/common/BackendConfigModal.tsx';
 import { Toast, ToastState } from './components/common/Toast.tsx';
-import { ArrowRight, RefreshCw, Server, User as UserIcon, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
+import {
+  ArrowRight,
+  RefreshCw,
+  Server,
+  User as UserIcon,
+  CheckCircle2,
+  ShieldCheck,
+  Clock,
+  GraduationCap,
+  Wrench,
+  Shield,
+  Activity,
+  Sparkles,
+  Lock,
+  CheckCircle,
+} from 'lucide-react';
+import { motion } from 'motion/react';
 
 // Realistic sample complaints for local demo preview only
 const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
@@ -617,152 +633,303 @@ export const App: React.FC = () => {
             <p className="text-xs">Loading HostelCare...</p>
           </div>
         ) : !currentUser ? (
-          /* Visibly Spacious, Polished Editorial Landing Page */
-          <div className="max-w-6xl mx-auto px-4 lg:px-8 py-8 sm:py-12 space-y-8 sm:space-y-10">
-            {/* Editorial Heading Section */}
-            <div className="space-y-3.5 max-w-3xl">
-              <span className="text-[11px] uppercase tracking-wider font-semibold text-[#1D4ED8]">
-                Hostel Operations & Maintenance
-              </span>
-
-              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#0F172A] leading-tight">
-                Your hostel, taken care of.
-              </h1>
-
-              <p className="text-sm sm:text-base text-[#64748B] max-w-2xl leading-relaxed">
-                Report maintenance problems, follow their progress, and help keep your hostel running smoothly.
-              </p>
-
-              {/* Close-to-heading primary actions */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button
-                  onClick={() => setShowLoginModal(true)}
-                  className="px-5 py-2.5 rounded-md bg-[#1D4ED8] hover:bg-[#1E40AF] text-white font-medium text-xs transition-colors shadow-xs"
-                >
-                  Sign in
-                </button>
-
-                <button
-                  onClick={() => setShowActivationModal(true)}
-                  className="px-5 py-2.5 rounded-md bg-[#FFFFFF] hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#E2E8F0] hover:border-[#CBD5E1] transition-colors"
-                >
-                  Activate room account
-                </button>
-              </div>
+          /* Visibly Spacious, Premium Editorial Landing Page */
+          <div className="relative overflow-hidden">
+            {/* Ambient subtle glow background */}
+            <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:-top-80">
+              <div
+                className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#93C5FD] to-[#3B82F6] opacity-20"
+                style={{
+                  clipPath:
+                    'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                }}
+              />
             </div>
 
-            {/* Role Selector (Spacious, integrated panels with one clear action each) */}
-            <div className="space-y-3.5 pt-1">
-              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
-                <h2 className="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">
-                  Explore role previews
-                </h2>
-                <span className="text-xs text-[#64748B]">
-                  Interactive preview with local sample data
-                </span>
+            <div className="max-w-6xl mx-auto px-4 lg:px-8 py-10 sm:py-16 space-y-12 sm:space-y-16">
+              {/* Editorial Hero Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-5 max-w-3xl"
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 shadow-premium-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                  <span className="text-[11px] font-semibold text-blue-800 dark:text-blue-300 tracking-wide uppercase">
+                    Hostel Maintenance & Facilities System
+                  </span>
+                </div>
+
+                <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.15]">
+                  Your hostel facilities, <br className="hidden sm:inline" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600">
+                    managed with precision.
+                  </span>
+                </h1>
+
+                <p className="text-sm sm:text-base text-[#64748B] dark:text-[#94A3B8] max-w-2xl leading-relaxed">
+                  Log maintenance tickets in seconds, track technician dispatches in real time, and guarantee accountable resolution across campus halls.
+                </p>
+
+                {/* Primary Actions */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition-all shadow-premium-sm hover:shadow-premium-md flex items-center gap-2 cursor-pointer"
+                  >
+                    <span>Sign in to account</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    onClick={() => setShowActivationModal(true)}
+                    className="px-6 py-2.5 rounded-lg bg-white dark:bg-[#152238] hover:bg-slate-50 dark:hover:bg-[#1E2E4A] text-[#0F172A] dark:text-[#F8FAFC] font-medium text-xs border border-slate-300/80 dark:border-[#243654] transition-all shadow-premium-xs hover:border-slate-400 cursor-pointer"
+                  >
+                    Activate room account
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Role Showcase Preview Cards */}
+              <div className="space-y-4 pt-2">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                  <div>
+                    <h2 className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider">
+                      Interactive Role Previews
+                    </h2>
+                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+                      Explore the system live with pre-loaded mock data
+                    </p>
+                  </div>
+                  <span className="hidden sm:inline-flex text-[11px] font-medium text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-200/60 dark:border-blue-900/40">
+                    One-click access
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+                  {/* Student View Card */}
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.2 }}
+                    className="group h-full bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] hover:border-blue-300 dark:hover:border-blue-700 rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-5 shadow-premium-xs hover:shadow-premium-md transition-all"
+                  >
+                    <div className="space-y-3.5">
+                      <div className="flex items-center justify-between">
+                        <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-semibold">
+                          <GraduationCap className="w-5 h-5" />
+                        </div>
+                        <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-[#1E2E4A] px-2.5 py-1 rounded-md">
+                          Alex Chen
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Student Resident
+                        </h3>
+                        <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1.5 leading-relaxed">
+                          Submit maintenance requests for your room, track technician progress on an audit timeline, and confirm or reopen fixes.
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleEnterDemo('STUDENT')}
+                      className="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 dark:bg-[#1E2E4A] hover:bg-blue-50 dark:hover:bg-blue-950 text-xs font-semibold text-slate-800 dark:text-slate-100 hover:text-blue-700 dark:hover:text-blue-300 border border-slate-200 dark:border-[#243654] hover:border-blue-200 dark:hover:border-blue-800 transition-all flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Preview student dashboard</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </motion.div>
+
+                  {/* Warden View Card */}
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.2 }}
+                    className="group h-full bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] hover:border-blue-300 dark:hover:border-blue-700 rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-5 shadow-premium-xs hover:shadow-premium-md transition-all"
+                  >
+                    <div className="space-y-3.5">
+                      <div className="flex items-center justify-between">
+                        <div className="w-9 h-9 rounded-lg bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-semibold">
+                          <Shield className="w-5 h-5" />
+                        </div>
+                        <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-[#1E2E4A] px-2.5 py-1 rounded-md">
+                          Dr. Ramesh
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Hostel Warden
+                        </h3>
+                        <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1.5 leading-relaxed">
+                          Triage incoming complaints, enforce priority levels, assign specialized technicians, and monitor resolution SLA analytics.
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleEnterDemo('WARDEN')}
+                      className="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 dark:bg-[#1E2E4A] hover:bg-blue-50 dark:hover:bg-blue-950 text-xs font-semibold text-slate-800 dark:text-slate-100 hover:text-blue-700 dark:hover:text-blue-300 border border-slate-200 dark:border-[#243654] hover:border-blue-200 dark:hover:border-blue-800 transition-all flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Preview warden dashboard</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </motion.div>
+
+                  {/* Worker View Card */}
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.2 }}
+                    className="group h-full bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] hover:border-blue-300 dark:hover:border-blue-700 rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-5 shadow-premium-xs hover:shadow-premium-md transition-all"
+                  >
+                    <div className="space-y-3.5">
+                      <div className="flex items-center justify-between">
+                        <div className="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-semibold">
+                          <Wrench className="w-5 h-5" />
+                        </div>
+                        <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-[#1E2E4A] px-2.5 py-1 rounded-md">
+                          Suresh Kumar
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                          Maintenance Technician
+                        </h3>
+                        <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1.5 leading-relaxed">
+                          Access assigned jobs, quickly look up tickets, record real-time work notes, and mark repairs resolved for student verification.
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleEnterDemo('WORKER')}
+                      className="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 dark:bg-[#1E2E4A] hover:bg-blue-50 dark:hover:bg-blue-950 text-xs font-semibold text-slate-800 dark:text-slate-100 hover:text-blue-700 dark:hover:text-blue-300 border border-slate-200 dark:border-[#243654] hover:border-blue-200 dark:hover:border-blue-800 transition-all flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Preview worker dashboard</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </motion.div>
+                </div>
               </div>
 
-              {/* Balanced 3-column CSS Grid with generous, consistent card heights */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
-                {/* Student View */}
-                <div className="h-full bg-[#FFFFFF] border border-[#E2E8F0] rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-4 shadow-xs">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#1D4ED8]">
-                        Student resident
+              {/* Four-Step Maintenance Workflow */}
+              <div className="space-y-4 pt-4">
+                <div className="border-b border-slate-200 dark:border-slate-800 pb-3">
+                  <h2 className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] uppercase tracking-wider">
+                    Complaint Resolution Lifecycle
+                  </h2>
+                  <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+                    Transparent, end-to-end accountability across four verified stages
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                  <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] shadow-premium-xs space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center">
+                        1
                       </span>
-                      <span className="text-[11px] font-medium text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded">
-                        Alex Chen
-                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-slate-100">Raise Ticket</span>
                     </div>
-                    <p className="text-xs text-[#64748B] mt-2.5 leading-relaxed">
-                      Submit complaints, track room repair progress, and confirm resolution.
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
+                      Resident reports the fault with category, specific room location, and initial urgency.
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => handleEnterDemo('STUDENT')}
-                    className="w-full py-2 px-3.5 rounded-lg bg-[#F8FAFC] hover:bg-[#EFF6FF] text-xs font-medium text-[#0F172A] border border-[#E2E8F0] hover:border-[#BFDBFE] transition-colors flex items-center justify-between"
-                  >
-                    <span>Preview student</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#1D4ED8]" />
-                  </button>
-                </div>
-
-                {/* Warden View */}
-                <div className="h-full bg-[#FFFFFF] border border-[#E2E8F0] rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-4 shadow-xs">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#1D4ED8]">
-                        Hostel warden
+                  <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] shadow-premium-xs space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 font-bold text-xs flex items-center justify-center">
+                        2
                       </span>
-                      <span className="text-[11px] font-medium text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded">
-                        Dr. Ramesh
-                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-slate-100">Triage & Assign</span>
                     </div>
-                    <p className="text-xs text-[#64748B] mt-2.5 leading-relaxed">
-                      Review incoming requests, triage urgency levels, and assign technicians.
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
+                      Warden reviews complaint queue, adjusts priority, and assigns an active hostel technician.
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => handleEnterDemo('WARDEN')}
-                    className="w-full py-2 px-3.5 rounded-lg bg-[#F8FAFC] hover:bg-[#EFF6FF] text-xs font-medium text-[#0F172A] border border-[#E2E8F0] hover:border-[#BFDBFE] transition-colors flex items-center justify-between"
-                  >
-                    <span>Preview warden</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#1D4ED8]" />
-                  </button>
-                </div>
-
-                {/* Worker View */}
-                <div className="h-full bg-[#FFFFFF] border border-[#E2E8F0] rounded-xl p-5 sm:p-6 flex flex-col justify-between space-y-4 shadow-xs">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#1D4ED8]">
-                        Maintenance worker
+                  <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] shadow-premium-xs space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                        3
                       </span>
-                      <span className="text-[11px] font-medium text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded">
-                        Suresh Kumar
-                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-slate-100">Execute Repair</span>
                     </div>
-                    <p className="text-xs text-[#64748B] mt-2.5 leading-relaxed">
-                      Look up tickets by ID, record work notes, and mark repairs resolved.
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
+                      Assigned technician investigates, logs repair notes, and marks the task as resolved.
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => handleEnterDemo('WORKER')}
-                    className="w-full py-2 px-3.5 rounded-lg bg-[#F8FAFC] hover:bg-[#EFF6FF] text-xs font-medium text-[#0F172A] border border-[#E2E8F0] hover:border-[#BFDBFE] transition-colors flex items-center justify-between"
-                  >
-                    <span>Preview worker</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#1D4ED8]" />
-                  </button>
+                  <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#152238] border border-slate-200 dark:border-[#243654] shadow-premium-xs space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center">
+                        4
+                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-slate-100">Verify & Close</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
+                      Resident tests the fix and closes the ticket, or reopens it with explanation if unresolved.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* How Maintenance Operates (Aligned 3-column layout) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 pt-1 text-xs">
-              <div className="p-4 sm:p-5 rounded-xl bg-[#FFFFFF] border border-[#E2E8F0] shadow-xs space-y-1.5">
-                <span className="font-semibold text-[#1D4ED8] text-xs">1. Report</span>
-                <p className="text-[#64748B] leading-relaxed">
-                  Students file issues with category, title, and room location.
-                </p>
+              {/* System Architecture & Security Highlights */}
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50/40 dark:from-[#152238] dark:to-[#1E2E4A] border border-slate-200 dark:border-[#243654] shadow-premium-xs">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-xs">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-semibold">
+                      <Lock className="w-4 h-4" />
+                      <span>Role-Level Isolation</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                      Strict JWT role authorization prevents unauthorized cross-hostel or cross-role access.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-semibold">
+                      <Activity className="w-4 h-4" />
+                      <span>Atomic State Safety</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                      All state transitions run inside MySQL transactions to prevent orphaned tickets.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-semibold">
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>Verifiable Audit Log</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                      Every transition records actor identity, role, timestamp, and optional status notes.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-semibold">
+                      <Server className="w-4 h-4" />
+                      <span>Live REST Telemetry</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                      Instant backend health monitor with automated fallback to interactive demo mode.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-xl bg-[#FFFFFF] border border-[#E2E8F0] shadow-xs space-y-1.5">
-                <span className="font-semibold text-[#1D4ED8] text-xs">2. Assign</span>
-                <p className="text-[#64748B] leading-relaxed">
-                  Wardens review queue, set urgency, and assign technicians.
-                </p>
-              </div>
-
-              <div className="p-4 sm:p-5 rounded-xl bg-[#FFFFFF] border border-[#E2E8F0] shadow-xs space-y-1.5">
-                <span className="font-semibold text-[#1D4ED8] text-xs">3. Resolve</span>
-                <p className="text-[#64748B] leading-relaxed">
-                  Workers update progress and residents verify resolution.
-                </p>
-              </div>
+              {/* Minimal Editorial Footer */}
+              <footer className="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">HostelCare</span>
+                  <span>·</span>
+                  <span>Campus Facilities & Incident Management Platform</span>
+                </div>
+                <div>
+                  <span>Institutional Hostel Operations Desk</span>
+                </div>
+              </footer>
             </div>
           </div>
         ) : (

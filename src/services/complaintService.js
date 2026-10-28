@@ -418,7 +418,8 @@ async function runStudentStatusTransition({
         const currentStatus = rows[0].status;
 
         // --- 2. Validate the transition ---
-        if (currentStatus !== expectedCurrent) {
+        const allowedStatuses = Array.isArray(expectedCurrent) ? expectedCurrent : [expectedCurrent];
+        if (!allowedStatuses.includes(currentStatus)) {
             await conn.rollback();
             throw new ApiError(
                 409,
@@ -457,7 +458,7 @@ async function runStudentStatusTransition({
              SET status = ?
              WHERE complaint_id = ?
                AND status = ?`,
-            [targetStatus, complaintId, expectedCurrent]
+            [targetStatus, complaintId, currentStatus]
         );
         if (updateResult.affectedRows !== 1) {
             await conn.rollback();
@@ -469,7 +470,7 @@ async function runStudentStatusTransition({
             `INSERT INTO complaint_history
                  (complaint_id, changed_by, old_status, new_status, note)
              VALUES (?, ?, ?, ?, ?)`,
-            [complaintId, userId, expectedCurrent, targetStatus, note]
+            [complaintId, userId, currentStatus, targetStatus, note]
         );
         if (historyResult.affectedRows !== 1) {
             await conn.rollback();
@@ -509,13 +510,13 @@ async function closeComplaintByStudent(userId, complaintId, rawNote) {
     });
 }
 
-// Student-driven reopen: RESOLVED -> PENDING.
+// Student-driven reopen: RESOLVED | CLOSED -> PENDING.
 async function reopenComplaintByStudent(userId, complaintId, rawNote) {
     return runStudentStatusTransition({
         userId,
         complaintId,
         rawNote,
-        expectedCurrent: 'CLOSED',
+        expectedCurrent: ['RESOLVED', 'CLOSED'],
         targetStatus: 'PENDING',
         defaultNote: STUDENT_DEFAULT_REOPEN_NOTE,
         // Reopen MUST deactivate the old assignment. Without

@@ -21,3 +21,6 @@ Thumbs.db
 dist/
 build/
 *.log
+
+# Local test artifacts
+runs/

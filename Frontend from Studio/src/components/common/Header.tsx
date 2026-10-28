@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-md bg-[#1D4ED8] dark:bg-[#2563EB] text-white flex items-center justify-center font-medium shadow-xs">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center font-medium shadow-premium-sm ring-1 ring-blue-700/20">
             <Building2 className="w-4 h-4" />
           </div>
           <div>
@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'Backend offline'}
             </span>
             <span
-              className={`w-1.5 h-1.5 rounded-full ${
+              className={`w-2 h-2 rounded-full shrink-0 ${
                 backendHealth?.isOnline && !isDemoMode
                   ? 'bg-[#059669]'
                   : isDemoMode

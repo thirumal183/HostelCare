@@ -13,7 +13,7 @@ require('dotenv').config();
 
 const mysql = require('mysql2/promise');
 
-const pool = mysql.createPool({
+const poolConfig = {
     host: process.env.DB_HOST || 'localhost',
     port: Number(process.env.DB_PORT) || 3306,
     user: process.env.DB_USER || 'root',
@@ -24,6 +24,16 @@ const pool = mysql.createPool({
     queueLimit: 0,
     // Return DATETIME/TIMESTAMP columns as JS Date objects
     dateStrings: false,
-});
+};
+
+// Enable TLS/SSL when DB_SSL is set to 'true' (required for TiDB Cloud / managed cloud databases)
+if (process.env.DB_SSL === 'true' || process.env.DB_SSL === '1') {
+    poolConfig.ssl = {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true,
+    };
+}
+
+const pool = mysql.createPool(poolConfig);
 
 module.exports = pool;

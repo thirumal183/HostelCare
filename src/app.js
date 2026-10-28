@@ -28,26 +28,34 @@ const app = express();
 
 // --- CORS Configuration ---
 // Configurable through CLIENT_ORIGIN (single origin or comma-separated list).
+// Production origins include the deployed Vercel frontend: https://hostelcare-one.vercel.app.
 // In development, http://localhost:3000 and http://127.0.0.1:3000 are supported by default.
-// In production, wildcard CORS is never allowed; only explicitly configured origins are accepted.
+const defaultOrigins = [
+    'https://hostelcare-one.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+];
+
 const configuredOrigins = process.env.CLIENT_ORIGIN
     ? process.env.CLIENT_ORIGIN.split(',').map((o) => o.trim()).filter(Boolean)
     : [];
 
-const defaultDevOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+const allowedOrigins = new Set([...defaultOrigins, ...configuredOrigins]);
 
-const isProduction = process.env.NODE_ENV === 'production';
-const allowedOrigins = isProduction
-    ? configuredOrigins
-    : Array.from(new Set([...defaultDevOrigins, ...configuredOrigins]));
+const isAllowedOrigin = (origin) => {
+    if (!origin) return true;
+    if (allowedOrigins.has(origin)) return true;
+    // Also allow any HostelCare Vercel deployment preview URLs (e.g. https://hostelcare-one-*.vercel.app)
+    if (/^https:\/\/hostelcare(-[a-z0-9-]+)?\.vercel\.app$/.test(origin)) {
+        return true;
+    }
+    return false;
+};
 
 const corsOptions = {
     origin: (origin, callback) => {
         // Allow requests with no origin (e.g. mobile apps, curl, server-to-server health checks)
-        if (!origin) {
-            return callback(null, true);
-        }
-        if (allowedOrigins.includes(origin)) {
+        if (isAllowedOrigin(origin)) {
             return callback(null, true);
         }
         return callback(new ApiError(403, 'CORS: Request from unapproved origin blocked'));

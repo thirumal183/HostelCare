@@ -14,6 +14,7 @@ import {
 
 // Base URL resolution: Environment variable > LocalStorage override > Localhost default
 const DEFAULT_API_BASE = 'http://localhost:5000/api';
+const DEFAULT_PROD_API_BASE = 'https://hostelcare-0xtu.onrender.com/api';
 
 function resolveApiBase(): string {
   if (typeof window !== 'undefined') {
@@ -25,6 +26,14 @@ function resolveApiBase(): string {
   const envUrl = (import.meta as any).env?.VITE_API_BASE_URL;
   if (envUrl && typeof envUrl === 'string' && envUrl.trim()) {
     return envUrl.trim().replace(/\/+$/, '');
+  }
+  // When running in a deployed web environment outside local loopback, default to the production Render backend
+  if (
+    typeof window !== 'undefined' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+  ) {
+    return DEFAULT_PROD_API_BASE;
   }
   return DEFAULT_API_BASE;
 }
@@ -248,8 +257,8 @@ export const api = {
   },
 
   // Health Checks: GET /api/health and GET /api/health/db
-  async checkHealth(): Promise<BackendHealth> {
-    const base = this.getBaseUrl();
+  async checkHealth(targetUrl?: string): Promise<BackendHealth> {
+    const base = targetUrl ? targetUrl.trim().replace(/\/+$/, '') : this.getBaseUrl();
     let isOnline = false;
     let dbConnected = false;
     let errorDetails: string | undefined;

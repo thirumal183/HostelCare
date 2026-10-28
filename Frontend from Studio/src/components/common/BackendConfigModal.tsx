@@ -50,7 +50,7 @@ export const BackendConfigModal: React.FC<BackendConfigModalProps> = ({
   const handleTestNow = async () => {
     setIsTesting(true);
     try {
-      const res = await api.checkHealth();
+      const res = await api.checkHealth(apiUrl.trim());
       setTestResult(res);
       if (onShowToast) {
         if (res.isOnline) {
@@ -159,11 +159,11 @@ export const BackendConfigModal: React.FC<BackendConfigModalProps> = ({
               required
               value={apiUrl}
               onChange={e => setApiUrl(e.target.value)}
-              placeholder="http://localhost:5000/api"
+              placeholder="https://hostelcare-0xtu.onrender.com/api"
               className="w-full px-3 py-1.5 text-xs font-mono bg-[#F8FAFC] dark:bg-[#0B132B] border border-[#E2E8F0] dark:border-[#243654] rounded-md text-[#0F172A] dark:text-[#F8FAFC] focus:outline-none focus:ring-1 focus:ring-[#1D4ED8]"
             />
             <p className="text-[11px] text-[#64748B] dark:text-[#94A3B8] mt-1">
-              Default: <code className="font-mono">http://localhost:5000/api</code>
+              Active: <code className="font-mono">{api.getBaseUrl()}</code>
             </p>
           </div>
 

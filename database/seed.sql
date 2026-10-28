@@ -100,63 +100,65 @@ INSERT INTO complaint_categories (category_id, category_name) VALUES
 -- =====================================================================
 INSERT INTO users (user_id, email, password_hash, role, is_active) VALUES
     -- ---------- STUDENTS (user_id 1..5) ----------
-    (1,  'student.bh3.thiru@hostelcare.test',  NULL, 'STUDENT', FALSE),
+    -- Student 1 is pre-activated for quick resident demo login ('Student@123').
+    -- Students 2..5 remain unactivated (is_active = FALSE) for testing room activation.
+    (1,  'student.bh3.thiru@hostelcare.test',  '$2b$10$C8v3vsTLd6qcGUehXWLbw.oHQHNKPSEvngF43he3wPbTnAGqDRq4i', 'STUDENT', TRUE),
     (2,  'student.bh4.aarav@hostelcare.test',  NULL, 'STUDENT', FALSE),
     (3,  'student.bh5.rohan@hostelcare.test',  NULL, 'STUDENT', FALSE),
     (4,  'student.gh1.ananya@hostelcare.test', NULL, 'STUDENT', FALSE),
     (5,  'student.gh2.kavya@hostelcare.test',  NULL, 'STUDENT', FALSE),
 
-    -- ---------- WARDENS (user_id 6..10) ----------
-    (6,  'warden.bh3@hostelcare.test', NULL, 'WARDEN', TRUE),
-    (7,  'warden.bh4@hostelcare.test', NULL, 'WARDEN', TRUE),
-    (8,  'warden.bh5@hostelcare.test', NULL, 'WARDEN', TRUE),
-    (9,  'warden.gh1@hostelcare.test', NULL, 'WARDEN', TRUE),
-    (10, 'warden.gh2@hostelcare.test', NULL, 'WARDEN', TRUE),
+    -- ---------- WARDENS (user_id 6..10: 'Warden@123') ----------
+    (6,  'warden.bh3@hostelcare.test', '$2b$10$wf10MtAjMlmzNPGEpYijI.eWkeA45TDEyKef6Ol5vFruBeuVd62Cm', 'WARDEN', TRUE),
+    (7,  'warden.bh4@hostelcare.test', '$2b$10$wf10MtAjMlmzNPGEpYijI.eWkeA45TDEyKef6Ol5vFruBeuVd62Cm', 'WARDEN', TRUE),
+    (8,  'warden.bh5@hostelcare.test', '$2b$10$wf10MtAjMlmzNPGEpYijI.eWkeA45TDEyKef6Ol5vFruBeuVd62Cm', 'WARDEN', TRUE),
+    (9,  'warden.gh1@hostelcare.test', '$2b$10$wf10MtAjMlmzNPGEpYijI.eWkeA45TDEyKef6Ol5vFruBeuVd62Cm', 'WARDEN', TRUE),
+    (10, 'warden.gh2@hostelcare.test', '$2b$10$wf10MtAjMlmzNPGEpYijI.eWkeA45TDEyKef6Ol5vFruBeuVd62Cm', 'WARDEN', TRUE),
 
-    -- ---------- WORKERS - BH-3 (user_id 11..15) ----------
-    (11, 'worker.bh3.electrical@hostelcare.test', NULL, 'WORKER', TRUE),
-    (12, 'worker.bh3.plumbing@hostelcare.test',  NULL, 'WORKER', TRUE),
-    (13, 'worker.bh3.wifi@hostelcare.test',      NULL, 'WORKER', TRUE),
-    (14, 'worker.bh3.furniture@hostelcare.test', NULL, 'WORKER', TRUE),
-    (15, 'worker.bh3.cleaning@hostelcare.test',  NULL, 'WORKER', TRUE),
+    -- ---------- WORKERS - BH-3 (user_id 11..15: 'Worker@123') ----------
+    (11, 'worker.bh3.electrical@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (12, 'worker.bh3.plumbing@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (13, 'worker.bh3.wifi@hostelcare.test',      '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (14, 'worker.bh3.furniture@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (15, 'worker.bh3.cleaning@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
 
-    -- ---------- WORKERS - BH-4 (user_id 16..20) ----------
-    (16, 'worker.bh4.electrical@hostelcare.test', NULL, 'WORKER', TRUE),
-    (17, 'worker.bh4.plumbing@hostelcare.test',  NULL, 'WORKER', TRUE),
-    (18, 'worker.bh4.wifi@hostelcare.test',      NULL, 'WORKER', TRUE),
-    (19, 'worker.bh4.furniture@hostelcare.test', NULL, 'WORKER', TRUE),
-    (20, 'worker.bh4.cleaning@hostelcare.test',  NULL, 'WORKER', TRUE),
+    -- ---------- WORKERS - BH-4 (user_id 16..20: 'Worker@123') ----------
+    (16, 'worker.bh4.electrical@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (17, 'worker.bh4.plumbing@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (18, 'worker.bh4.wifi@hostelcare.test',      '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (19, 'worker.bh4.furniture@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (20, 'worker.bh4.cleaning@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
 
-    -- ---------- WORKERS - BH-5 (user_id 21..25) ----------
-    (21, 'worker.bh5.electrical@hostelcare.test', NULL, 'WORKER', TRUE),
-    (22, 'worker.bh5.plumbing@hostelcare.test',  NULL, 'WORKER', TRUE),
-    (23, 'worker.bh5.wifi@hostelcare.test',      NULL, 'WORKER', TRUE),
-    (24, 'worker.bh5.furniture@hostelcare.test', NULL, 'WORKER', TRUE),
-    (25, 'worker.bh5.cleaning@hostelcare.test',  NULL, 'WORKER', TRUE),
+    -- ---------- WORKERS - BH-5 (user_id 21..25: 'Worker@123') ----------
+    (21, 'worker.bh5.electrical@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (22, 'worker.bh5.plumbing@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (23, 'worker.bh5.wifi@hostelcare.test',      '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (24, 'worker.bh5.furniture@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (25, 'worker.bh5.cleaning@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
 
-    -- ---------- WORKERS - GH-1 (user_id 26..30) ----------
-    (26, 'worker.gh1.electrical@hostelcare.test', NULL, 'WORKER', TRUE),
-    (27, 'worker.gh1.plumbing@hostelcare.test',  NULL, 'WORKER', TRUE),
-    (28, 'worker.gh1.wifi@hostelcare.test',      NULL, 'WORKER', TRUE),
-    (29, 'worker.gh1.furniture@hostelcare.test', NULL, 'WORKER', TRUE),
-    (30, 'worker.gh1.cleaning@hostelcare.test',  NULL, 'WORKER', TRUE),
+    -- ---------- WORKERS - GH-1 (user_id 26..30: 'Worker@123') ----------
+    (26, 'worker.gh1.electrical@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (27, 'worker.gh1.plumbing@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (28, 'worker.gh1.wifi@hostelcare.test',      '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (29, 'worker.gh1.furniture@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (30, 'worker.gh1.cleaning@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
 
-    -- ---------- WORKERS - GH-2 (user_id 31..35) ----------
-    (31, 'worker.gh2.electrical@hostelcare.test', NULL, 'WORKER', TRUE),
-    (32, 'worker.gh2.plumbing@hostelcare.test',  NULL, 'WORKER', TRUE),
-    (33, 'worker.gh2.wifi@hostelcare.test',      NULL, 'WORKER', TRUE),
-    (34, 'worker.gh2.furniture@hostelcare.test', NULL, 'WORKER', TRUE),
-    (35, 'worker.gh2.cleaning@hostelcare.test',  NULL, 'WORKER', TRUE);
+    -- ---------- WORKERS - GH-2 (user_id 31..35: 'Worker@123') ----------
+    (31, 'worker.gh2.electrical@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (32, 'worker.gh2.plumbing@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (33, 'worker.gh2.wifi@hostelcare.test',      '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (34, 'worker.gh2.furniture@hostelcare.test', '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE),
+    (35, 'worker.gh2.cleaning@hostelcare.test',  '$2b$10$y4kSbHOViA1o7fskYSEo0.BoEfMSbiRSs/yt4G0pP.wSLNq9rSlVO', 'WORKER', TRUE);
 
 -- =====================================================================
--- 5. STUDENTS  (5 demo students, 1 per hostel, all NOT activated)
+-- 5. STUDENTS  (5 demo students, 1 per hostel)
 -- ---------------------------------------------------------------------
--- One demo student per hostel, each placed in the *first* room of that
--- hostel. is_activated = FALSE; the backend will set it to TRUE only
--- after the student submits the master activation key from .env.
+-- Student 1 ('Thiru') is pre-activated for immediate testing.
+-- Students 2..5 remain unactivated (is_activated = FALSE) to test
+-- first-time room activation using the master key.
 -- =====================================================================
 INSERT INTO students (student_id, user_id, name, room_id, is_activated) VALUES
-    (1, 1, 'Thiru',        1,  FALSE),  -- BH-3  room A-101
+    (1, 1, 'Thiru',        1,  TRUE),   -- BH-3  room A-101 (Pre-activated demo student)
     (2, 2, 'Aarav Sharma', 5,  FALSE),  -- BH-4  room B-101
     (3, 3, 'Rohan Verma',  9,  FALSE),  -- BH-5  room C-101
     (4, 4, 'Ananya Iyer',  13, FALSE),  -- GH-1  room D-101

@@ -64,8 +64,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({
 
   const handleFillStudent = () => {
     setEmail('student.bh3.thiru@hostelcare.test');
-    setPassword('');
-    setError('Student accounts require room activation before first login. Please click "Activate room account" below to activate.');
+    setPassword('Student@123');
+    setError(null);
   };
 
   return (
@@ -117,9 +117,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({
               type="button"
               onClick={handleFillStudent}
               className="px-2 py-1 text-[11px] bg-[#FFFFFF] dark:bg-[#152238] border border-[#E2E8F0] dark:border-[#243654] rounded hover:border-[#1D4ED8] dark:hover:border-[#60A5FA] text-[#0F172A] dark:text-[#F8FAFC] transition-colors"
-              title="Students must activate account before login"
+              title="Demo student resident account (Room A-101)"
             >
-              Student Info
+              Student Demo
             </button>
           </div>
         </div>

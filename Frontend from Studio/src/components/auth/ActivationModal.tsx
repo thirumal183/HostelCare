@@ -29,6 +29,16 @@ export const ActivationModal: React.FC<ActivationModalProps> = ({
 
   if (!isOpen) return null;
 
+  const handleFillDemoResident = () => {
+    setEmail('student.bh4.aarav@hostelcare.test');
+    setHostel('BH-4');
+    setRoom('B-101');
+    setActivationKey('HOSTELCARE2026');
+    setPassword('Student@123');
+    setConfirmPassword('Student@123');
+    setError(null);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !hostel.trim() || !room.trim() || !activationKey.trim() || !password) {
@@ -130,7 +140,20 @@ export const ActivationModal: React.FC<ActivationModalProps> = ({
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <>
+            <div className="mb-3 p-2 bg-[#F8FAFC] dark:bg-[#0B132B] rounded-md border border-[#E2E8F0] dark:border-[#243654] flex items-center justify-between">
+              <span className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
+                Test student activation:
+              </span>
+              <button
+                type="button"
+                onClick={handleFillDemoResident}
+                className="px-2 py-0.5 text-[11px] bg-[#FFFFFF] dark:bg-[#152238] border border-[#E2E8F0] dark:border-[#243654] rounded hover:border-[#1D4ED8] dark:hover:border-[#60A5FA] text-[#0F172A] dark:text-[#F8FAFC] transition-colors"
+              >
+                Fill Resident Demo
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-3">
             <div>
               <label className="block text-xs font-medium text-[#64748B] dark:text-[#94A3B8] mb-1">
                 University email
@@ -244,6 +267,7 @@ export const ActivationModal: React.FC<ActivationModalProps> = ({
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </form>
+        </>
         )}
 
         <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#1E2E4A] text-center text-xs text-[#64748B] dark:text-[#94A3B8]">
